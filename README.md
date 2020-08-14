@@ -9,4 +9,3 @@ Está sendo desenvolvido ainda, possui 0 comandos, e o desenvolvimento foi inici
 # Links
 
 Site: em breve
-Me adicione: em breve
