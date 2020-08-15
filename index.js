@@ -1,6 +1,7 @@
 const { Client, Collection } = require('discord.js')
 const { config } = require('dotenv')
 const client = new Client()
+const { readdirSync } = require('fs')
 
 client.comandos = new Collection()
 client.alternativas = new Collection()
@@ -13,9 +14,15 @@ config({
     require(`./script/${handler}`)(client);
 });
 
-client.on('ready', () => {
+const evtFiles = readdirSync('./events/')
+console.log(`Foram carregados ${evtFiles.length} eventos.`)
 
-    console.log(`Olá, ${client.user.username} está online.`)
+evtFiles.forEach(x => {
+
+  const nome = x.split('.')[0]
+  const evento = require(`./events/${x}`)
+
+  client.on(nome, evento.bind(null, client))
 
 })
 
