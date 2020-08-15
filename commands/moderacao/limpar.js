@@ -5,6 +5,8 @@ module.exports = {
     alternativas: ["limpar", "clear"],
     run: async(client, message, args) => {
 
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Você não tem a permissão necessária para executar esse coamndo, bobo(a). A permissão necessária é **Gerenciar mensagens.**")
+
         let canal = message.mentions.channels.first()
         if(canal) {
 

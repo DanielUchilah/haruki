@@ -5,6 +5,8 @@ module.exports = {
     alternativas: ["deletaremoji", "deleteemoji", "dlemoji", "removeemoji"],
     run: async(client, message, args) => {
 
+        if(!message.member.hasPermission("MANAGE_EMOJIS")) return message.reply("Você não tem a permissão necessária para executar esse coamndo, bobo(a). A permissão necessária é **Gerenciar emojis.**")
+
         if(!args[0]) return message.reply("Não encontrei nenhum emoji válido, sinto muito...")
 
         let [ emojiString ] = /<a?:[^\W]+:[\d]+>/g.exec(args[0]);
