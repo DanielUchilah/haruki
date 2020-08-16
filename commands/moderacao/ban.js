@@ -10,7 +10,7 @@ module.exports = {
         const membro = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         if(!membro) return message.reply("Você não inseriu um membro válido.")
         
-        if(membro.id === message.author.id) return message.reply("Você não pode ser banir bobinho(a). :pensive:")
+        if(membro.id === message.author.id) return message.reply("Você não pode se banir bobinho(a). :pensive:")
 
         if(message.member.roles.highest.rawPosition <= membro.roles.highest.rawPosition) return message.reply("Você possui um cargo inferior ou igual ao usuário mencionado, serei incapaz de banir.")
         if(message.guild.member(client.user).roles.highest.position <= membro.roles.highest.rawPosition) return message.reply("O cargo do membro mencionado é maior que o meu, serei incapaz de banir.")
