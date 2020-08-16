@@ -8,6 +8,8 @@ module.exports = {
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("Você não tem permissão para utilizar este tipo de comando, bobo(a). A permissão necessária é **Banir membros.**")
 
         const membro = message.mentions.members.first() || message.guild.members.cache.get(args[0])
+        if(!membro) return message.reply("Você não inseriu um membro válido.")
+        
         if(membro.id === message.author.id) return message.reply("Você não pode ser banir bobinho(a). :pensive:")
 
         if(message.member.roles.highest.rawPosition <= membro.roles.highest.rawPosition) return message.reply("Você possui um cargo inferior ou igual ao usuário mencionado, serei incapaz de banir.")
