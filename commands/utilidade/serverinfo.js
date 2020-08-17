@@ -9,7 +9,10 @@ module.exports = {
         var embed = {
             title: "<:info:744724523076681790> ⋅ Informações do servidor.",
             description: `👑 **Dono** ${message.guild.owner}\n🛡️ **ID** ${message.guild.id}\n🙇 **Criado em** ${moment(message.guild.createdAt).format("DD/MM/YYYY HH:mm")}\n\n🌎 **Região** ${message.guild.region}\n📋 **Canais** ${message.guild.channels.cache.size}\n💁 **Membros** ${message.guild.members.cache.size}\n\n💁 **Entrei aqui em** ${moment(message.guild.joinedAt).format("DD/MM/YYYY HH:mm")}\n🛡️ **Level de verificação** ${message.guild.verificationLevel}`,
-            color: "AQUA"
+            color: "AQUA",
+            thumbnail: {
+                url: message.guild.iconURL()
+            }
         }
         message.reply({ embed: embed })
 

@@ -9,16 +9,12 @@ module.exports = {
             title: "<a:rsrs:744303388535029871> ⋅ Ficou interessado em mim?",
             fields: [
                 {
-                    name: `Suporte`,
+                    name: `<:suporte:744321561896681525> Suporte`,
                     value: "Entre em meu servidor de suporte https://discord.gg/aPB7PYM",
                 },
                 {
-                    name: `Me adicione`,
-                    value: "Me convide para seu servidor https://discord.js.org"
-                },
-                {
-                    name: `Lista de comandos`,
-                    value: "Use h/help para visualizar a minha lista de comandos."
+                    name: `📎 Acesse meu site`,
+                    value: "Acesse https://harukibot.online para ver meus comandos ou até me adicionar."
                 }
             ],
             color: "AQUA"
