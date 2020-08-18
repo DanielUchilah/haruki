@@ -1,9 +1,11 @@
 const Discord = require('discord.js')
 
 module.exports = {
-    nome: "config",
-    alternativas: ["config", "configurar"],
-    run: async (client, message, args) => {
+    nome: "entrada",
+    alternativas: ["entrada", "join"],
+    run: async (client, message, args, owner, database) => {
+
+        let membro = message.author
 
         var embed = {
             title: "<:info:744724523076681790> ⋅ Configurações.",
@@ -32,7 +34,14 @@ module.exports = {
 
             case "mensagem":
 
-                
+                let argumento = args.slice(1).join(" ")
+                if(!argumento) return message.reply("Você não inseriu a mensagem que deseja de boas vindas.")
+
+                let placeholder1 = argumento.replace(/{user}/g, membro)
+                let placeholder2 = placeholder1.replace(/{user.name}/g, membro.username)
+                let placeholder3 = placeholder2.replace(/{membros}/g, message.guild.memberCount)
+
+                await message.reply(placeholder3)
 
             break;
 
