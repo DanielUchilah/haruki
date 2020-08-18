@@ -7,11 +7,17 @@
     "ascii-table": "^0.0.9",
     "discord.js": "^12.3.0",
     "dotenv": "^8.2.0",
-    "fs": "^0.0.1-security"
+    "firebase": "^7.18.0",
+    "fs": "^0.0.1-security",
+    "moment": "^2.27.0",
+    "ms": "^2.1.2",
+    "nodemon": "^2.0.4",
+    "superagent": "^6.0.0",
+    "translate": "^1.1.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

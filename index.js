@@ -1,7 +1,23 @@
 const { Client, Collection } = require('discord.js')
 const { config } = require('dotenv')
 const client = new Client()
+const firebase = require('firebase')
 const { readdirSync } = require('fs')
+
+var firebaseConfig = {
+    apiKey: process.env.ApiKey,
+    authDomain: process.env.AuthDomain,
+    databaseURL: "https://haruki-database.firebaseio.com",
+    projectId: process.env.ProjectId,
+    storageBucket: process.env.StorageBucket,
+    messagingSenderId: process.env.MessagingSenderId,
+    appId: process.env.AppId,
+    measurementId: process.env.MeasurementId
+};
+  
+firebase.initializeApp(firebaseConfig);
+
+const database = firebase.database()
 
 client.comandos = new Collection()
 client.alternativas = new Collection()
@@ -28,7 +44,7 @@ evtFiles.forEach(x => {
 
 client.on('message', async (message) => {
 
-    const prefix = "h/";
+    const prefix = "!";
 
     if (message.author.bot) return;
     if (!message.guild) return;
@@ -45,7 +61,7 @@ client.on('message', async (message) => {
     let comando = client.comandos.get(cmd);
     if (!comando) comando = client.comandos.get(client.alternativas.get(cmd));
 
-    if (comando) comando.run(client, message, args, owner);
+    if (comando) comando.run(client, message, args, owner, database);
 
 })
 

@@ -5,10 +5,10 @@ module.exports = {
     alternativas: ["eval", "cmd"],
     run: async(client, message, args, owner) => {
 
-        if(!message.author.id === owner) return message.reply("Epa, você não tem permissão para executar esse comando.")
+        if(message.author.id != owner) return message.reply("Epa, você não tem permissão para executar esse comando.")
 
         const codigo = args.slice(0).join(" ");
-        if(!codigo) return message.reply("Insira o codigo.")
+        if(!codigo) return message.reply("Você não inseriu o código.")
 
         try {
 
