@@ -1,14 +1,39 @@
 const Discord = require('discord.js')
+const firebase = require('firebase')
 
-module.exports = (client, membro) => {
+module.exports = async (client, membro) => {
 
-    if(!membro.guild.id != "743973499365883910") {
+    let database = firebase.database()
 
-        let canal = client.channels.cache.get("743984665194659851")
+    database.ref(`Servidores/BemVindo/${membro.guild.id}`).once('value').then(async function (snap) {
+
+        if(snap.val() === null) {
+
+            return;
+
+        } else {
+
+            if(snap.val().status == 'on') {
+
+                let texto = snap.val().texto
     
-        canal.send(`<a:dancinha:744329305516933201> **» Um novo membro!**\n\nSeja bem vindo **${membro.user.username}**, me chamo Haruki mas você pode me chamar de Haru!\n\nMe adicione em seu servidor, para que eu possa atingir os 100 servidores o mais rápido possivel. Mas primeiro, visualize todos os comandos em **https://harukibot.online**\n\nAlguma dúvida? Pergunte em <#744677360971808819>`)
+                let fakeplace1 = texto.replace(/{user}/g, membro)
+                let fakeplace2 = fakeplace1.replace(/{user.name}/g, membro.user.username)
+                let fakeplace3 = fakeplace2.replace(/{membros}/g, membro.guild.memberCount)
         
-        membro.roles.add("744675526345490463")    
+                let canal = membro.guild.channels.cache.get(snap.val().canal)   
+                if(!canal) return;
 
-    }
+                canal.send(fakeplace3)
+
+            } else {
+
+                return;
+                
+            }
+
+        }
+
+
+    })
 }
