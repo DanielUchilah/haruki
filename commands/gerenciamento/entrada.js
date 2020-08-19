@@ -6,9 +6,7 @@ module.exports = {
     run: async (client, message, args, owner, database) => {
 
         if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply("Opa, você não possui as permissões necessárias para executar este comando... A permissão necessária é a **Gerenciar canais.**")
-
-        let membro = message.author
-
+        
         var embed = {
             title: "<:info:744724523076681790> ⋅ Configurações.",
             description: "Olá, tudo bom? Vim te ajudar nas configurações. \n\nEm baixo tem todas as configurações disponiveis neste comando. E atenção, lembre se sempre de ativar o modulo depois de configurar, se não, não irá funcionar.",
@@ -100,7 +98,7 @@ module.exports = {
                     if(snap.val() === null) {
                         
                         database.ref(`Servidores/BemVindo/${message.guild.id}`).set({
-                            mensagem: 'Está é uma mensagem padrão, ou seja, não definiram a mensagem de boas vindas ainda... Por favor, altere utilizando o comando **h/entrada**',
+                            texto: 'Está é uma mensagem padrão, ou seja, não definiram a mensagem de boas vindas ainda... Por favor, altere utilizando o comando **h/entrada**',
                             canal: canal.id
                         })
                         message.channel.send("<:yes:745409812212220064> ⋅ O canal foi alterado com sucesso.")
@@ -125,7 +123,7 @@ module.exports = {
 
                         database.ref(`Servidores/BemVindo/${message.guild.id}`).set({
                             status: 'on',
-                            mensagem: 'Está é uma mensagem padrão, ou seja, não definiram a mensagem de boas vindas ainda... Por favor, altere utilizando o comando **h/entrada**'
+                            texto: 'Está é uma mensagem padrão, ou seja, não definiram a mensagem de boas vindas ainda... Por favor, altere utilizando o comando **h/entrada**'
                         })
                         message.reply("<:yes:745409812212220064> ⋅ Status alterado, está função já foi habilitada.")
 
