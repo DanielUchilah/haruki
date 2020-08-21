@@ -44,6 +44,14 @@ evtFiles.forEach(x => {
 
 client.on('message', async (message) => {
 
+    if (message.author.bot) return;
+    if (!message.guild) { 
+    
+        client.channels.cache.get("746455694609219665").send(`Hm, o usuário ${message.author.username}/${message.author.id} me enviou a mensagem ${message.content}`) 
+        return;
+
+    }
+
     let prefix = ""
     const snap = await database.ref(`Servidores/Prefix/${message.guild.id}`).once('value')
     if(snap.val() === null) {
@@ -56,8 +64,6 @@ client.on('message', async (message) => {
 
     }
 
-    if (message.author.bot) return;
-    if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
 
     if (!message.member) message.member = await message.guild.fetchMember(message);
