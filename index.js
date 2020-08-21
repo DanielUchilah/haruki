@@ -44,7 +44,17 @@ evtFiles.forEach(x => {
 
 client.on('message', async (message) => {
 
-    const prefix = "!";
+    let prefix = ""
+    const snap = await database.ref(`Servidores/Prefix/${message.guild.id}`).once('value')
+    if(snap.val() === null) {
+        
+        prefix = "h/" 
+
+    } else {
+
+        prefix = snap.val().prefixo
+
+    }
 
     if (message.author.bot) return;
     if (!message.guild) return;
