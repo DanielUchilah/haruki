@@ -5,6 +5,9 @@ module.exports = {
     alternativas: ["addemoji", "adicionaremoji"],
     run: async(client, message, args) => {
 
+        if(!message.guild.me.hasPermission("SEND_MESSAGES")) return message.author.send("Então... Eu não possuo permissão de enviar mensagens no servidor, peça para um administrador gerenciar meu cargo.").catch(err => { return });
+        if(!message.guild.me.hasPermission("MANAGE_EMOJIS")) return message.reply("Então... Eu não possuo permissão de gerenciar emojis no servidor, peça para um administrador gerenciar meu cargo.")
+
         if(!message.member.hasPermission("MANAGE_EMOJIS")) return message.reply("Você não tem a permissão necessária para executar esse coamndo, bobo(a). A permissão necessária é **Gerenciar emojis.**")
 
         let emoji = message.attachments.first()

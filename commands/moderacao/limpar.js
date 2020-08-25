@@ -5,6 +5,9 @@ module.exports = {
     alternativas: ["limpar", "clear"],
     run: async(client, message, args) => {
 
+        if(!message.guild.me.hasPermission("SEND_MESSAGES")) return message.author.send("Então... Eu não possuo permissão de enviar mensagens no servidor, peça para um administrador gerenciar meu cargo.").catch(err => { return });
+        if(!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.reply("Então... Eu não possuo permissão de gerenciar mensagens no servidor, peça para um administrador gerenciar meu cargo.")
+
         if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Você não tem a permissão necessária para executar esse coamndo, bobo(a). A permissão necessária é **Gerenciar mensagens.**")
 
         let canal = message.mentions.channels.first()

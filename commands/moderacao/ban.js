@@ -5,6 +5,9 @@ module.exports = {
     alternativas: ["banir", "ban"],
     run: async(client, message, args) => {
 
+        if(!message.guild.me.hasPermission("SEND_MESSAGES")) return message.author.send("Então... Eu não possuo permissão de enviar mensagens no servidor, peça para um administrador gerenciar meu cargo.").catch(err => { return });
+        if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("Então... Eu não possuo permissão de banir membros, peça para um administrador gerenciar meu cargo.")
+
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("Você não tem permissão para utilizar este tipo de comando, bobo(a). A permissão necessária é **Banir membros.**")
 
         const membro = message.mentions.members.first() || message.guild.members.cache.get(args[0])
