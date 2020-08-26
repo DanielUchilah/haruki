@@ -6,7 +6,7 @@ module.exports = {
     alternativas: ["tapa", "bater", "slap"],
     run: async(client, message, args, owner) => {
 
-        const membro = message.mentions.users.first() || message.guild.members.cache.get(args[0])
+        const membro = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]))
         if(!membro) return message.reply(`Eu não consegui encontrar o membro que você inseriu...`)
 
         if(membro.id === message.author.id) return message.reply(`O que é isso? Não bata em si mesmo moço(a) :pensive:`)
@@ -38,7 +38,7 @@ module.exports = {
         } else {
 
             var embed = {
-                title: `<a:tapa:695369382825820241> ⋅ ${message.author.username} bateu em ${membro.username}`,
+                title: `<a:tapa:695369382825820241> ⋅ ${message.author.username} bateu em ${membro.user.username}`,
                 color: "AQUA",
                 image: {
                     url: body.url

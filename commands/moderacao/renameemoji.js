@@ -15,7 +15,7 @@ module.exports = {
 
         let [ emojiString ] = /<a?:[^\W]+:[\d]+>/g.exec(args[1]);
         let emojiMatched = message.guild.emojis.cache.find(e => e.toString() === emojiString);
-        if(!emojiMatched) return message.reply("Não encontrei nenhum emoji válido, sinto muito...")
+        if(!emojiMatched) return message.reply("Não encontrei esse emoji no servidor, sinto muito...")
 
         emojiMatched.edit({ name: args[0] }).then(emoji => {
 
@@ -23,7 +23,7 @@ module.exports = {
 
         }).catch(err => {
 
-            message.reply("Não consegui renomear esse emoji, sinto muito...")
+            message.reply("Não consegui renomear o emoji, sinto muito... Verifique se você colocou acento no emoji, o discord não aceita.")
 
         })
 

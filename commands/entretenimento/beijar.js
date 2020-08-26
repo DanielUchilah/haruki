@@ -6,7 +6,7 @@ module.exports = {
     alternativas: ["kiss", "beijar"],
     run: async(client, message, args, owner) => {
 
-        const membro = message.mentions.users.first() || message.guild.members.cache.get(args[0])
+        const membro = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[0]))
         if(!membro) return message.reply(`Eu não consegui encontrar o membro que você inseriu...`)
 
         if(membro.id === message.author.id) return message.reply(`KKK? Você não pode se beijar bobo(a).`)
@@ -14,7 +14,7 @@ module.exports = {
         let { body } = await superagent.get('https://nekos.life/api/kiss');
 
         var embed = {
-            title: `😍 ⋅ ${message.author.username} beijou ${membro.username}`,
+            title: `😍 ⋅ ${message.author.username} beijou ${membro.user.username}`,
             color: "AQUA",
             image: {
                 url: body.url

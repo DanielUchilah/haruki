@@ -21,8 +21,8 @@ module.exports = {
     
             }).catch(err => {
     
-                message.reply(`Sinto muito, mas eu não consegui adicionar este emoji.`)
-    
+                message.reply("Não consegui renomear o emoji, sinto muito... Verifique se você colocou acento no emoji, o discord não aceita.")
+
             })
         
         } else {
@@ -33,8 +33,8 @@ module.exports = {
     
             }).catch(err => {
     
-                message.reply(`Sinto muito, mas eu não consegui adicionar este emoji.`)
-    
+                message.reply("Não consegui criar o emoji, sinto muito... Verifique se você colocou acento no emoji, o discord não aceita.")
+
             })
 
         }

@@ -14,7 +14,7 @@ module.exports = {
 
         let [ emojiString ] = /<a?:[^\W]+:[\d]+>/g.exec(args[0]);
         let emojiMatched = message.guild.emojis.cache.find(e => e.toString() === emojiString);
-        if(!emojiMatched) return message.reply("Não encontrei nenhum emoji válido, sinto muito...")
+        if(!emojiMatched) return message.reply("Não encontrei este emoji no servidor...")
 
         emojiMatched.delete().then(() => {
 
